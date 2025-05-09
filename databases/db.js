@@ -2,7 +2,7 @@ const mysql = require('mysql2'); // En lugar de require('mysql')
 
 const conexion = mysql.createConnection({
     host: 'localhost',
-    database: 'resyhot',
+    database: 'easystay',
     user: 'root',
     password: 'root',
     insecureAuth: true

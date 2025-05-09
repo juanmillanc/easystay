@@ -33,12 +33,16 @@ body::before {
     display: flex;
     border-radius: 20px;
     box-shadow: 0 5px 7px rgba(0, 0, 0, .1);
-    height: 500px;
+    height: auto;
+    min-height: 500px;
+    max-height: 650px;
     max-width: 900px;
+    width: 90%;
     transition: all 1s ease;
-    margin: 10px;
+    margin: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    overflow-y: auto;
 }
 
 .information {
@@ -85,18 +89,21 @@ body::before {
 }
 
 .form-information {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60%;
-  text-align: center;
-  background-color: #0000009d;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 30px 0;
 }
 
 .form-information-childs {
-  padding: 0 30px;
+    padding: 0 30px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .form-information-childs h2 {
@@ -106,51 +113,123 @@ body::before {
 
 .form-information-childs p {
   color: #ffffff;
+  margin: 15px 0;
+  font-size: 0.9em;
+  opacity: 0.8;
 }
 
 .icons {
-  margin: 15px 0;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }
 
-.icons i {
-  border-radius: 50%;
-  padding: 15px;
-  cursor: pointer;
-  margin: 0 10px;
-  color: #9191bd;
-  border: solid thin #9191bd;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
-}
-
-.icons i:hover {
-  background-color: #c7c7f3;
-  color: #fff;
+.social-icon {
+    width: 40px;
+    height: 40px;
 }
 
 .form {
-  margin: 30px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
 }
 
 .form label {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  border-radius: 20px;
-  padding: 0 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
-  position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    position: relative;
 }
 
-.form label input {
-  width: 100%;
-  padding: 10px;
-  background-color: #fff;
-  border: none;
-  outline: none;
-  border-radius: 20px;
-  color: #333;
+.form input {
+    width: 100%;
+    padding: 12px 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.password-requirements {
+    margin-top: 8px;
+    font-size: 0.75em;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-align: left;
+    width: 100%;
+}
+
+.form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Ajustes para los mensajes de alerta */
+.alerta-error, .alerta-exito {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 0.85em;
+}
+
+/* Ajustes para los iconos sociales */
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-icon i {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+/* Estilos específicos para cada plataforma */
+.social-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Google */
+.social-icon:has(.bxl-google):hover {
+  background-color: #DB4437;
+  border-color: #DB4437;
+}
+
+/* Facebook */
+.social-icon:has(.bxl-facebook):hover {
+  background-color: #4267B2;
+  border-color: #4267B2;
+}
+
+/* Phone */
+.social-icon:has(.bx-phone):hover {
+  background-color: #25D366;
+  border-color: #25D366;
 }
 
 .form label i {
@@ -168,19 +247,8 @@ body::before {
   color: #333;
 }
 
-.form input[type="submit"] {
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 20px;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  margin-top: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
-}
-
 .form input[type="submit"]:hover {
-  background-color: #c7c7c7;
+  background-color: #45a049;
 }
 
 .hide {
@@ -257,5 +325,124 @@ body::before {
     border-bottom-left-radius: 20px;
     border-top-right-radius: 0;
   }
+}
+
+@media (max-width: 768px) {
+    .container-form {
+        width: 95%;
+        flex-direction: column;
+        min-height: auto;
+        max-height: none;
+    }
+
+    .information {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        padding: 20px 0;
+    }
+
+    .form-information {
+        width: 100%;
+        border-radius: 0 0 20px 20px;
+    }
+}
+
+.password-requirements {
+    margin-top: 8px;
+    font-size: 0.8em;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-align: left;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.password-requirements p {
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+.password-requirements ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.password-requirements li {
+    margin: 2px 0;
+    transition: color 0.3s ease;
+    color: #ff9999;
+    font-size: 0.8em;
+    line-height: 1.4;
+}
+
+.password-requirements li.valid {
+    color: #4CAF50;
+}
+
+.password-requirements li::before {
+    content: "•";
+    margin-right: 6px;
+    font-size: 1.1em;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.user-initial {
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.user-menu-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #333;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.user-menu-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.menu-text {
+    margin: 0 8px;
+}
+
+.user-menu-button i {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.form-information-childs a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.form-information-childs a:hover {
+    color: #cccccc;
 }
 

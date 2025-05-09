@@ -24,11 +24,17 @@
             <div class="form-information-childs">
                 <h2>Crear una Cuenta</h2>
                 <div class="icons">
-                    <i class='bx bxl-google'></i>
-                    <i class='bx bxl-github'></i>
-                    <i class='bx bxl-linkedin' ></i>
+                    <a href="#" class="social-icon" title="Registrarse con Google">
+                        <i class='bx bxl-google'></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Registrarse con Facebook">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Registrarse con teléfono">
+                        <i class='bx bx-phone'></i>
+                    </a>
                 </div>
-                <p>o usa tu email para registrarte</p>
+                <p>o registrarse con email</p>
                 <form class="form form-register" novalidate>
                     <div>
                         <label>
@@ -51,9 +57,21 @@
                     <div>
                         <label>
                             <i class='bx bx-lock-alt' ></i>
-                            <input type="password" placeholder="Contraseña" name="password" required>
+                            <input type="password" placeholder="Contraseña" name="password" required 
+                                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$"
+                                   title="La contraseña debe tener entre 8 y 20 caracteres, incluir mayúsculas, minúsculas, números y caracteres especiales">
                             <i class='bx bx-show-alt toggle-password'></i>
                         </label>
+                        <div class="password-requirements">
+                            <p>La contraseña debe cumplir con:</p>
+                            <ul>
+                                <li id="length">Mínimo 8 caracteres</li>
+                                <li id="uppercase">Al menos una mayúscula</li>
+                                <li id="lowercase">Al menos una minúscula</li>
+                                <li id="number">Al menos un número</li>
+                                <li id="special">Al menos un carácter especial</li>
+                            </ul>
+                        </div>
                     </div>
                    
                     <input type="submit" value="Registrarse">
@@ -77,11 +95,17 @@
             <div class="form-information-childs">
                 <h2>Iniciar Sesión</h2>
                 <div class="icons">
-                    <i class='bx bxl-google'></i>
-                    <i class='bx bxl-github'></i>
-                    <i class='bx bxl-linkedin' ></i>
+                    <a href="#" class="social-icon" title="Iniciar sesión con Google">
+                        <i class='bx bxl-google'></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Iniciar sesión con Facebook">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Iniciar sesión con teléfono">
+                        <i class='bx bx-phone'></i>
+                    </a>
                 </div>
-                <p>o Iniciar Sesión con una cuenta</p>
+                <p>o iniciar sesión con email</p>
                 <form class="form form-login"novalidate>
                     <div>
                         <label >
@@ -96,6 +120,7 @@
                             <i class='bx bx-show-alt toggle-password'></i>
                         </label>
                     </div>
+                    <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
                     <input type="submit" value="Iniciar Sesión">
                     <div class="alerta-error">Todos los campos son obligatorios</div>
                     <div class="alerta-exito">Te registraste correctamente</div>

@@ -4,6 +4,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.form-register');
     const alertaError = form.querySelector('.alerta-error');
     const alertaExito = form.querySelector('.alerta-exito');
+    const passwordInput = form.querySelector('input[name="password"]');
+    const emailInput = form.querySelector('input[name="email"]');
+
+    // Función para validar el email
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Función para validar la contraseña
+    function validatePassword(password) {
+        const requirements = {
+            length: password.length >= 8 && password.length <= 20,
+            uppercase: /[A-Z]/.test(password),
+            lowercase: /[a-z]/.test(password),
+            number: /[0-9]/.test(password),
+            special: /[@$!%*?&]/.test(password)
+        };
+
+        // Actualizar la UI de los requisitos
+        Object.keys(requirements).forEach(req => {
+            const element = document.getElementById(req);
+            if (element) {
+                if (requirements[req]) {
+                    element.classList.add('valid');
+                } else {
+                    element.classList.remove('valid');
+                }
+            }
+        });
+
+        return Object.values(requirements).every(Boolean);
+    }
+
+    // Validación en tiempo real de la contraseña
+    passwordInput.addEventListener('input', function() {
+        validatePassword(this.value);
+    });
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -17,9 +55,25 @@ document.addEventListener('DOMContentLoaded', function() {
             telefono: formData.get('telefono')
         };
 
-        // Validar que los campos requeridos no estén vacíos
+        // Validar campos requeridos
         if (!data.nombre || !data.email || !data.password) {
             alertaError.textContent = 'Todos los campos son obligatorios';
+            alertaError.classList.add('alertaError');
+            alertaExito.classList.remove('alertaExito');
+            return;
+        }
+
+        // Validar email
+        if (!validateEmail(data.email)) {
+            alertaError.textContent = 'Por favor, ingrese un email válido';
+            alertaError.classList.add('alertaError');
+            alertaExito.classList.remove('alertaExito');
+            return;
+        }
+
+        // Validar contraseña
+        if (!validatePassword(data.password)) {
+            alertaError.textContent = 'La contraseña no cumple con los requisitos mínimos';
             alertaError.classList.add('alertaError');
             alertaExito.classList.remove('alertaExito');
             return;
